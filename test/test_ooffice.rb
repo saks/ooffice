@@ -1,7 +1,32 @@
 require 'helper'
 
-class TestOoffice < Test::Unit::TestCase
-  def test_something_for_real
-    flunk "hey buddy, you should probably rename this file and start testing for real"
-  end
+class TestOOffice < Test::Unit::TestCase
+
+	context 'external api' do
+
+		setup do
+			@existing_path     = File.join Dir.pwd, 'test', 'assets', 'document.fodt'
+			@not_existing_path = 'this_file_not_existst'
+		end
+
+		should "accept only instance of File, text of xml document, nil, or empty string" do
+			assert_nothing_raised(Exception) do
+				OOffice::instantiate :Presentation, IO.read(@existing_path)
+				OOffice::instantiate :Presentation, File.new(@existing_path)
+			end
+
+			assert_raise(Nokogiri::XML::XPath::SyntaxError) do
+				OOffice::instantiate :Presentation, ''
+				OOffice::instantiate :Presentation, nil
+			end
+
+			assert_raise(Nokogiri::XML::SyntaxError) do
+				OOffice::instantiate :Presentation, 'not an xml document'
+			end
+
+		end
+
+	end
+
 end
+
