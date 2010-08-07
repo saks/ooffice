@@ -3,7 +3,7 @@
 module OOffice
 	class Base
 
-		MARKER_RE = /__(\S+)__/
+		MARKER_RE = /(__(\S+)__)/
 
 		attr_reader :xml, :source
 

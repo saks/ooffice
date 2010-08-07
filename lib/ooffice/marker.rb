@@ -2,9 +2,9 @@ module OOffice
 	class Marker
 		attr_reader :text_node, :replace_range
 
-		def initialize(text_node, match_data)
-			@text_node  = text_node
-			@match_data = match_data
+		def initialize(text_node, marker_string)
+			@text_node     = text_node
+			@marker_string = marker_string
 
 			@replace_range = calculate_replace_range
 		end
@@ -16,9 +16,10 @@ module OOffice
 		end
 
 		def calculate_replace_range
-			offset = @match_data.offset 1
+			start  = @text_node.content.index @marker_string
+			finish = start + @marker_string.size
 
-			offset[0] - 2 ... offset[1] + 2 # FIXME: remove hardcoded +- 2
+			start ... finish
 		end
 
 	end

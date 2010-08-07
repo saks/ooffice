@@ -2,7 +2,7 @@ require 'helper'
 
 class TestPresentation < Test::Unit::TestCase
 
-	UNIQ_MARKERS_NUMBER = 6
+	UNIQ_MARKERS_NUMBER = 7
 
 	context 'instance methods' do
 		setup do
@@ -26,7 +26,15 @@ class TestPresentation < Test::Unit::TestCase
 
 			@presentation.module = 'my favourite module'
 			@presentation.parent = 'parent from ruby 1.9.1'
-#			puts @presentation.xml
+			@presentation.url    = 'mernik.by'
+			@presentation.second_page = 'SECOND PAGE'
+
+			result = @presentation.xml.to_s
+
+			assert_no_match /__module__/,      result
+			assert_no_match /__parent__/,      result
+			assert_no_match /__url__/,         result
+			assert_no_match /__second_page__/, result
 		end
 
 	end

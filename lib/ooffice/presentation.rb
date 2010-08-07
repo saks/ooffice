@@ -22,11 +22,12 @@ module OOffice
 			@xml.traverse do | node |
 				if node.text? and
 						node.content.include?('__') and
-						match = MARKER_RE.match(node.content)
+						(matches = node.content.scan MARKER_RE).size > 0
 
-					name = match[1]
-					result[name] ||= []
-					result[name] << Marker.new(node, match)
+					matches.each do | marker_string, name |
+						result[name] ||= []
+						result[name] << Marker.new(node, marker_string)
+					end
 				end
 			end
 

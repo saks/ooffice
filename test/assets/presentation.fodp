@@ -97,7 +97,7 @@
                <config:config-item config:name="NoColors" config:type="boolean">true</config:config-item>
                <config:config-item config:name="RulerIsVisible" config:type="boolean">false</config:config-item>
                <config:config-item config:name="PageKind" config:type="short">0</config:config-item>
-               <config:config-item config:name="SelectedPage" config:type="short">0</config:config-item>
+               <config:config-item config:name="SelectedPage" config:type="short">1</config:config-item>
                <config:config-item config:name="IsLayerMode" config:type="boolean">false</config:config-item>
                <config:config-item config:name="IsBigHandles" config:type="boolean">true</config:config-item>
                <config:config-item config:name="IsDoubleClickTextEdit" config:type="boolean">true</config:config-item>
@@ -1728,7 +1728,7 @@
                         <text:p text:style-name="P4">So me another test <text:span text:style-name="T2">__marker__</text:span> sadasd</text:p>
                      </text:list-item>
                      <text:list-item>
-                        <text:p text:style-name="P4">Asdas <text:span text:style-name="T3">__xxx__</text:span> asdasd</text:p>
+                        <text:p text:style-name="P4">Asdas <text:span text:style-name="T3">__xxx__</text:span> asdasd and __url__</text:p>
                      </text:list-item>
                   </text:list>
                </draw:text-box>
@@ -1966,7 +1966,7 @@
                         presentation:class="title"
                         presentation:user-transformed="true">
                <draw:text-box>
-                  <text:p>__second_page__<text:line-break/>
+                  <text:p>__second_page__ and __url__<text:line-break/>
                   </text:p>
                </draw:text-box>
             </draw:frame>
