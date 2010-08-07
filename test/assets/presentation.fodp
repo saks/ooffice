@@ -72,7 +72,7 @@
    </office:meta>
    <office:settings>
       <config:config-item-set config:name="ooo:view-settings">
-         <config:config-item config:name="VisibleAreaTop" config:type="int">-304</config:config-item>
+         <config:config-item config:name="VisibleAreaTop" config:type="int">954</config:config-item>
          <config:config-item config:name="VisibleAreaLeft" config:type="int">-3817</config:config-item>
          <config:config-item config:name="VisibleAreaWidth" config:type="int">36001</config:config-item>
          <config:config-item config:name="VisibleAreaHeight" config:type="int">21817</config:config-item>
@@ -97,7 +97,7 @@
                <config:config-item config:name="NoColors" config:type="boolean">true</config:config-item>
                <config:config-item config:name="RulerIsVisible" config:type="boolean">false</config:config-item>
                <config:config-item config:name="PageKind" config:type="short">0</config:config-item>
-               <config:config-item config:name="SelectedPage" config:type="short">1</config:config-item>
+               <config:config-item config:name="SelectedPage" config:type="short">0</config:config-item>
                <config:config-item config:name="IsLayerMode" config:type="boolean">false</config:config-item>
                <config:config-item config:name="IsBigHandles" config:type="boolean">true</config:config-item>
                <config:config-item config:name="IsDoubleClickTextEdit" config:type="boolean">true</config:config-item>
@@ -106,7 +106,7 @@
                <config:config-item config:name="EditModeStandard" config:type="int">0</config:config-item>
                <config:config-item config:name="EditModeNotes" config:type="int">0</config:config-item>
                <config:config-item config:name="EditModeHandout" config:type="int">1</config:config-item>
-               <config:config-item config:name="VisibleAreaTop" config:type="int">954</config:config-item>
+               <config:config-item config:name="VisibleAreaTop" config:type="int">-781</config:config-item>
                <config:config-item config:name="VisibleAreaLeft" config:type="int">-3817</config:config-item>
                <config:config-item config:name="VisibleAreaWidth" config:type="int">36002</config:config-item>
                <config:config-item config:name="VisibleAreaHeight" config:type="int">21818</config:config-item>
@@ -1966,7 +1966,8 @@
                         presentation:class="title"
                         presentation:user-transformed="true">
                <draw:text-box>
-                  <text:p>__second_page__</text:p>
+                  <text:p>__second_page__<text:line-break/>
+                  </text:p>
                </draw:text-box>
             </draw:frame>
             <draw:frame presentation:style-name="pr10" draw:layer="layout" svg:width="25.199cm"

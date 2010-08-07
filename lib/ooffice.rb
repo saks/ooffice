@@ -11,7 +11,7 @@ require 'ooffice/presentation'
 module OOffice
 
 	def instantiate(type, source)
-		"#{self}::#{type.to_s.titleize}".constantize.new source
+		"#{self}::#{type.to_s.titleize}".constantize.instantiate source
 	end
 
 	%w[ Presentation ].each do | type |

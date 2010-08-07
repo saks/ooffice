@@ -1,10 +1,9 @@
 module OOffice
 	class Marker
-		attr_reader :element, :replace_range, :text_node
+		attr_reader :text_node, :replace_range
 
-		def initialize(element, match_data)
-			@element    = element
-			@text_node  = @element.child
+		def initialize(text_node, match_data)
+			@text_node  = text_node
 			@match_data = match_data
 
 			@replace_range = calculate_replace_range
