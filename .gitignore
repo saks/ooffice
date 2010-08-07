@@ -1,3 +1,9 @@
+## BUNDLER and RVM
+RAILS
+.bundle
+Gemfile.lock
+.rvmrc
+
 ## MAC OS
 .DS_Store
 
@@ -14,8 +20,14 @@ tmtags
 *.swp
 
 ## PROJECT::GENERAL
-coverage
-rdoc
-pkg
+coverage/*
+rdoc/*
+pkg/*
+tmp/*
+*.gem
 
 ## PROJECT::SPECIFIC
+
+## OpenOffice
+.~lock.*#
+
