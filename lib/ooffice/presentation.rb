@@ -83,5 +83,5 @@ module OOffice
 		end
 
 	end # end of class Presentation
-end # end of module OOFfice
+end # end of module OOffice
 
