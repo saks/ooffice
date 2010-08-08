@@ -29,7 +29,7 @@ class TestOOfficeBase < Test::Unit::TestCase
 		end
 
 		should "initialize document correctly" do
-			obj = OOffice::Base.new File.new @template_path
+			obj = OOffice::Base.new File.new(@template_path), 'test_name'
 
 			assert_instance_of Nokogiri::XML::Document, obj.xml
 		end

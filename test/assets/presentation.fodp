@@ -1779,7 +1779,7 @@
                         presentation:user-transformed="true">
                <draw:text-box>
                   <text:p text:style-name="P3">
-                     <text:span text:style-name="T2">Some title __name__</text:span> 
+                     <text:span text:style-name="T2">Some title __some_name__</text:span>
                   </text:p>
                </draw:text-box>
             </draw:frame>

@@ -6,15 +6,16 @@ module OOffice
 		MARKER_RE = /(__(\S+)__)/
 
 		attr_reader :xml, :source
+		attr_accessor :name
 
 		delegate :to_xml, :to => :xml
 		delegate :to_s,   :to => :xml
 
-		def initialize(source)
+		def initialize(source, name)
 			@source = source
+			@name   = name
 			@xml    = parse_xml
 		end
-
 
 		# Parses instance file from instance variable *@file* and returns
 		# Nokogiri xml document.

@@ -2,18 +2,17 @@
 
 module OOffice
 	class Presentation < Base
-
 		attr_reader :markers, :tables
 
-		def initialize(source)
-			super(source)
+		def initialize(source, name)
+			super(source, name)
 
 			@markers = parse_and_generate_markers
 			@tables  = parse_and_generate_marked_tables
 		end
 
-		def self.instantiate(source)
-			obj = self.new(source)
+		def self.instantiate(source, name)
+			obj = self.new(source, name)
 			obj.assign_setter_merthods
 			obj
 		end

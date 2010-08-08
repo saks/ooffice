@@ -7,7 +7,7 @@ class TestPresentation < Test::Unit::TestCase
 	context 'instance methods' do
 		setup do
 			@presentation_path = File.join Dir.pwd, 'test/assets/presentation.fodp'
-			@presentation = OOffice::Presentation.new IO.read @presentation_path
+			@presentation = OOffice::Presentation.new IO.read(@presentation_path), 'test_name'
 		end
 
 		should "find all of the marked elements" do
@@ -31,7 +31,7 @@ class TestPresentation < Test::Unit::TestCase
 		end
 
 		should "replace text with setter methods" do
-			@presentation.assign_setter_merthods
+			@presentation = OOffice::Presentation IO.read(@presentation_path)
 
 			@presentation.module = 'my favourite module'
 			@presentation.parent = 'parent from ruby 1.9.1'
@@ -43,8 +43,6 @@ class TestPresentation < Test::Unit::TestCase
 			@presentation.tables.sex_and_age [ [9, 10], [8, 9], [7, 8], [6, 7] ]
 
 			result = @presentation.xml.to_s
-
-			File.open('/tmp/1.fodp', 'w') { |f| f.puts result }
 
 			assert_no_match /__module__/,      result
 			assert_no_match /__parent__/,      result

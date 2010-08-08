@@ -11,14 +11,14 @@ require 'ooffice/presentation'
 
 module OOffice
 
-	def instantiate(type, source)
-		"#{self}::#{type.to_s.titleize}".constantize.instantiate source
+	def instantiate(type, source, name)
+		"#{self}::#{type.to_s.titleize}".constantize.instantiate source, name
 	end
 
 	%w[ Presentation ].each do | type |
 		self.instance_eval do
-			define_method type do | source |
-				self.instantiate type, source
+			define_method type do | source, name=nil | #TODO: port to ruby 1.8.6
+				self.instantiate type, source, (name or "template_#{rand}")
 			end
 		end
 	end

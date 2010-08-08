@@ -12,8 +12,8 @@ class TestOOffice < Test::Unit::TestCase
 
 		should "accept only instance of File, text of xml document, nil, or empty string" do
 			assert_nothing_raised(Exception) do
-				OOffice::instantiate :Presentation, IO.read(@existing_path)
-				OOffice::instantiate :Presentation, File.new(@existing_path)
+				OOffice::instantiate :Presentation, IO.read(@existing_path), 'test_name'
+				OOffice::instantiate :Presentation, File.new(@existing_path), 'test_name'
 			end
 
 #			assert_raise(Nokogiri::XML::XPath::SyntaxError) do
@@ -22,13 +22,22 @@ class TestOOffice < Test::Unit::TestCase
 #			end
 
 			assert_raise(Nokogiri::XML::SyntaxError) do
-				OOffice::instantiate :Presentation, 'not an xml document'
+				OOffice::instantiate :Presentation, 'not an xml document', 'test_name'
 			end
 
 		end
 
-		should "do all substitutions with presentation" do
+		should "generate fake name if not passed" do
+			presentation = OOffice::Presentation @xml, 'test_name'
+			assert_equal 'test_name', presentation.name
+
 			presentation = OOffice::Presentation @xml
+			assert_not_nil presentation.name
+			assert_instance_of String, presentation.name
+		end
+
+		should "do all substitutions with presentation" do
+			presentation = OOffice::Presentation @xml, 'test_name'
 
 			presentation.module = 'my favourite module'
 
