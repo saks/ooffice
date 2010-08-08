@@ -1,5 +1,10 @@
 module OOffice
 	class Marker
+
+		# Will be raised if document object already has accessor with name wich
+		# equals to marker name
+		class ForbiddenMarkerName < Exception; end
+
 		attr_reader :text_node, :replace_range
 
 		def initialize(text_node, marker_string)

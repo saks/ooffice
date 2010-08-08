@@ -52,7 +52,39 @@ class TestPresentation < Test::Unit::TestCase
 			assert_no_match /__marker__/,      result
 		end
 
+		should "should raise error if marker name the same as accessor method" do
+			@presentation.instance_variable_set :@markers, {'name' => 'something'}
+
+			assert_raise(OOffice::Marker::ForbiddenMarkerName) { @presentation.assign_setter_merthods }
+		end
+
 	end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end
 

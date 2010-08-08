@@ -49,7 +49,14 @@ module OOffice
 
 		def assign_setter_merthods
 			@markers.each do | name, markers |
-				self.define_singleton_method "#{name}=" do | new_text |
+
+				accessor_name = "#{name}="
+
+				if self.respond_to? accessor_name
+					raise Marker::ForbiddenMarkerName, "marker name: `#{name}'"
+				end
+
+				self.define_singleton_method accessor_name do | new_text |
 					markers.each do | marker |
 						marker.replace new_text
 					end
