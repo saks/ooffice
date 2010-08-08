@@ -7,6 +7,9 @@ module OOffice
 
 		attr_reader :xml, :source
 
+		delegate :to_xml, :to => :xml
+		delegate :to_s,   :to => :xml
+
 		def initialize(source)
 			@source = source
 			@xml    = parse_xml

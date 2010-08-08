@@ -18,9 +18,6 @@ module OOffice
 			obj
 		end
 
-		delegate :to_xml, :to => :xml
-		delegate :to_s,   :to => :xml
-
 		def parse_and_generate_markers
 			result = {}
 			@xml.traverse do | node |
