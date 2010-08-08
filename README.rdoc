@@ -1,6 +1,6 @@
 == About OOffice
 
-Pretty simple gem for handling flat xml templates for OpenOffice. It allows you to substitute any marked words on the page and even data table values for charts.
+Pretty simple gem to deal with flat xml templates for OpenOffice. It allows you to substitute any marked words on the page and even data table values for charts.
 
 == Usage
 

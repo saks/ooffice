@@ -12,8 +12,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   gem.name = "ooffice"
-  gem.summary = %Q{Pretty simple gem deal with flat xml templates for OpenOffice}
-  gem.description = %Q{Pretty simple gem deal with flat xml templates for OpenOffice. It allows you to substitute any marked words on the page and even data table values for charts.}
+  gem.summary = %Q{Pretty simple gem to deal with flat xml templates for OpenOffice}
+  gem.description = %Q{Pretty simple gem to deal with flat xml templates for OpenOffice. It allows you to substitute any marked words on the page and even data table values for charts.}
   gem.email = "saksmlz@gmail.com"
   gem.homepage = "http://github.com/saks/ooffice"
   gem.authors = ["saks"]
