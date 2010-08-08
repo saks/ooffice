@@ -11,11 +11,11 @@ require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
-  gem.name = "xxx"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.name = "ooffice"
+  gem.summary = %Q{Pretty simple gem deal with flat xml templates for OpenOffice}
+  gem.description = %Q{Pretty simple gem deal with flat xml templates for OpenOffice. It allows you to substitute any marked words on the page and even data table values for charts.}
   gem.email = "saksmlz@gmail.com"
-  gem.homepage = "http://github.com/saks/xxx"
+  gem.homepage = "http://github.com/saks/ooffice"
   gem.authors = ["saks"]
   # Have dependencies? Add them to Gemfile
 
@@ -43,7 +43,8 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "xxx #{version}"
+  rdoc.title = "ooffice #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+

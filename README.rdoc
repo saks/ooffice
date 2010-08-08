@@ -1,9 +1,49 @@
-= ooffice
+== About OOffice
 
-Description goes here.
+Pretty simple gem for handling flat xml templates for OpenOffice. It allows you to substitute any marked words on the page and even data table values for charts.
+
+== Usage
+
+=== Substitute markers with text
+
+If we have template (template.fodp for example) that contain following text on
+the one of it's slides
+
+BasicObject is the __parent__ class of all classes in Ruby. It’s an explicit blank class.
+
+Here '__parent__' is the marker. Then you can substitute this arker with any
+other text like this:
+
+presentation = OOffice::Presentation IO.read 'path to template.fodp'
+presentation.parent = 'parent since ruby 1.9'
+
+and then presentation.to_xml will contain:
+
+BasicObject is the parent since ruby 1.9 class of all classes in Ruby. It’s an explicit blank class.
+
+=== Change chart table data
+
+Consider our template contains a number of charts. Each chart in presentation has
+it's own data table and it's data can be changed with this lib.
+
+To mark chart for substitution just right click over chart and select "name" to
+change chart name. Assign new name to chart like "table::sex_and_age_chart".
+Name must contain mandatory key word ('table') and some another name by you
+(to access it via substitution api) joined with '::'.
+
+Now wi can change data it table like:
+
+presentation = OOffice::Presentation IO.read 'path to template.fodp'
+presentation.tables.sex_and_age_chart([[10, 20], [10, 30]])
+
+=== Get the result
+
+To get the result of substitution just call presentation.to_xml and write it
+into the file.
+
 
 == Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
@@ -15,3 +55,4 @@ Description goes here.
 == Copyright
 
 Copyright (c) 2010 saksmlz. See LICENSE for details.
+
