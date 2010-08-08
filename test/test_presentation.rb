@@ -36,16 +36,22 @@ class TestPresentation < Test::Unit::TestCase
 			@presentation.module = 'my favourite module'
 			@presentation.parent = 'parent from ruby 1.9.1'
 			@presentation.url    = 'mernik.by'
+			@presentation.marker = '"there was a marker"'
+			@presentation.xxx    = '<something sensored>'
 			@presentation.second_page = 'SECOND PAGE'
+
+			@presentation.tables.sex_and_age [ [9, 10], [8, 9], [7, 8], [6, 7] ]
 
 			result = @presentation.xml.to_s
 
-			@presentation.tables.sex_and_age [ [9, 10], [8, 9], [7, 8], [6, 7] ]
+			File.open('/tmp/1.fodp', 'w') { |f| f.puts result }
 
 			assert_no_match /__module__/,      result
 			assert_no_match /__parent__/,      result
 			assert_no_match /__url__/,         result
 			assert_no_match /__second_page__/, result
+			assert_no_match /__xxx__/,         result
+			assert_no_match /__marker__/,      result
 		end
 
 	end

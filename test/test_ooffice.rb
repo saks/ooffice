@@ -16,10 +16,10 @@ class TestOOffice < Test::Unit::TestCase
 				OOffice::instantiate :Presentation, File.new(@existing_path)
 			end
 
-			assert_raise(Nokogiri::XML::XPath::SyntaxError) do
-				OOffice::instantiate :Presentation, ''
-				OOffice::instantiate :Presentation, nil
-			end
+#			assert_raise(Nokogiri::XML::XPath::SyntaxError) do
+#				OOffice::instantiate :Presentation, ''
+#				OOffice::instantiate :Presentation, nil
+#			end
 
 			assert_raise(Nokogiri::XML::SyntaxError) do
 				OOffice::instantiate :Presentation, 'not an xml document'
