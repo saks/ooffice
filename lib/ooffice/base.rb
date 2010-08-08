@@ -3,6 +3,8 @@
 module OOffice
 	class Base
 
+		include PdfConverter
+
 		MARKER_RE = /(__(\S+)__)/
 
 		attr_reader :xml, :source

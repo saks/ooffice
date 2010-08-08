@@ -1,9 +1,12 @@
 # encoding utf-8
 
+require 'tempfile'
+
 require 'nokogiri'
 require 'active_support'
 require 'active_support/core_ext/string'
 
+require 'ooffice/pdf_converter'
 require 'ooffice/base'
 require 'ooffice/marker'
 require 'ooffice/data_table'
