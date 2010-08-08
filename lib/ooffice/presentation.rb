@@ -64,7 +64,9 @@ module OOffice
 			end
 		end
 
-		class Tables# < BasicObject
+		class Tables < BasicObject
+			attr_reader :tables
+
 			def initialize
 				@tables = {}
 			end
@@ -77,7 +79,7 @@ module OOffice
 				if table = @tables[meth.to_s]
 					table.replace *args
 				else
-					raise ArgumentError.new "There is now table with #{meth}. Available table names: #{@tables.keys}"
+					::Object.send :raise, ::ArgumentError, "There is now table with #{meth}. Available table names: #{@tables.keys}"
 				end
 			end
 		end

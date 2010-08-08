@@ -5,6 +5,7 @@ require 'tempfile'
 require 'nokogiri'
 require 'active_support'
 require 'active_support/core_ext/string'
+require 'active_support/basic_object'
 
 require 'ooffice/pdf_converter'
 require 'ooffice/base'

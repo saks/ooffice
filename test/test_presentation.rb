@@ -22,7 +22,7 @@ class TestPresentation < Test::Unit::TestCase
 		end
 
 		should "find table" do
-			tables = @presentation.tables.instance_variable_get :@tables
+			tables = @presentation.tables.tables
 			assert_equal 1, tables.size
 			sex_and_age_table = tables['sex_and_age']
 			assert_not_nil sex_and_age_table
