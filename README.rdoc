@@ -32,9 +32,14 @@ Name must contain mandatory key word ('table') and some another name by you
 (to access it via substitution api) joined with '::'.
 
 Now wi can change data it table like:
-
+<code>
 presentation = OOffice::Presentation IO.read 'path to template.fodp'
-presentation.tables.sex_and_age_chart([[10, 20], [10, 30]])
+presentation.tables.sex_and_age_chart(:rows => [[1, 20], [2, 30], [3, 40]])
+</code>
+or
+<code>
+presentation.tables.sex_and_age_chart(:coluns => [[1, 2, 3], [20, 30, 40]])
+</code>
 
 === Get the result
 
