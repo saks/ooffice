@@ -41,7 +41,7 @@ class TestOOffice < Test::Unit::TestCase
 
 			presentation.module = 'my favourite module'
 
-			presentation.tables.sex_and_age [ [9, 10], [8, 9], [7, 8], [6, 7] ]
+			presentation.tables.sex_and_age(:rows => [ [9, 10], [8, 9], [7, 8], [6, 7] ])
 
 			result = presentation.to_xml
 

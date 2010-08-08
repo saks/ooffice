@@ -82,19 +82,19 @@ class TestDataTable < Test::Unit::TestCase
 			@data_table = OOffice::DataTable.new @xml.at_xpath './/table:table'
 		end
 
-		should "parse rows" do
+		should "parse rows and replace it's data with :rows key" do
 			assert_equal 4, @data_table.rows.size
 			text_before   = @xml.xpath('.//table:table-cell[@office:value-type="float"]/text:p/text()').map(&:content)
 			values_before = @xml.xpath('.//table:table-cell[@office:value-type="float"]/@office:value').map(&:value)
 
 			assert_equal text_before, values_before
 
-			@data_table.replace [
+			@data_table.replace(:rows => [
 				[ 1, 11],
 				[ 2, 22],
 				[ 3, 33],
 				[ 4, 44],
-			]
+			])
 
 			text_after   = @xml.xpath('.//table:table-cell[@office:value-type="float"]/text:p/text()').map(&:content)
 			values_after = @xml.xpath('.//table:table-cell[@office:value-type="float"]/@office:value').map(&:value)
@@ -102,9 +102,28 @@ class TestDataTable < Test::Unit::TestCase
 			assert_equal ["1", "22", "2", "33", "3", "44", "4", "55"], values_before
 		end
 
+		should "parse rows and replace it's data with :columns key" do
+			assert_equal 4, @data_table.rows.size
+			text_before   = @xml.xpath('.//table:table-cell[@office:value-type="float"]/text:p/text()').map(&:content)
+			values_before = @xml.xpath('.//table:table-cell[@office:value-type="float"]/@office:value').map(&:value)
+
+			assert_equal text_before, values_before
+
+			@data_table.replace(:columns => [
+				[1, 2, 3, 4],
+				[11, 22, 33, 44]
+			])
+
+			text_after   = @xml.xpath('.//table:table-cell[@office:value-type="float"]/text:p/text()').map(&:content)
+			values_after = @xml.xpath('.//table:table-cell[@office:value-type="float"]/@office:value').map(&:value)
+			assert_equal text_before, values_before
+			assert_equal ["1", "22", "2", "33", "3", "44", "4", "55"], values_before
+		end
+
+
 	end
 
-	context 'data table row' do
+	context "data table row and replace it's data" do
 
 		setup do
 			@xml = Nokogiri::XML '
@@ -129,7 +148,7 @@ class TestDataTable < Test::Unit::TestCase
 			@row = OOffice::DataTable::Row.new @xml.at_xpath './/table:table-row'
 		end
 
-		should "parse cells" do
+		should "parse cells and replace it's data" do
 			assert_equal 2, @row.cells.size
 
 			text_before   = @xml.xpath('.//table:table-cell/text:p/text()').map(&:content)

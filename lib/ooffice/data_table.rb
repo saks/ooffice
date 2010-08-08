@@ -14,9 +14,21 @@ module OOffice
 			end
 		end
 
-		def replace(new_rows)
+		def replace(new_data)
+			new_rows = prepare_rows new_data
+
 			@rows.each_with_index do | row, i |
 				row.replace new_rows[i]
+			end
+		end
+
+		def prepare_rows(new_data)
+			if rows = new_data.delete(:rows)
+				rows
+			elsif columns = new_data.delete(:columns)
+				columns.transpose
+			else
+				raise ArgumentError, "Invalid table data passed: `#{new_data.inspect}'"
 			end
 		end
 

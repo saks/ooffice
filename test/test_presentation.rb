@@ -40,7 +40,7 @@ class TestPresentation < Test::Unit::TestCase
 			@presentation.xxx    = '<something sensored>'
 			@presentation.second_page = 'SECOND PAGE'
 
-			@presentation.tables.sex_and_age [ [9, 10], [8, 9], [7, 8], [6, 7] ]
+			@presentation.tables.sex_and_age :rows => [ [9, 10], [8, 9], [7, 8], [6, 7] ]
 
 			result = @presentation.xml.to_s
 
