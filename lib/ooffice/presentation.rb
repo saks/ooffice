@@ -3,12 +3,13 @@
 module OOffice
 	class Presentation < Base
 
-		attr_reader :markers
+		attr_reader :markers, :tables
 
 		def initialize(source)
 			super(source)
 
 			@markers = parse_and_generate_markers
+			@tables  = parse_and_generate_marked_tables
 		end
 
 		def self.instantiate(source)
@@ -34,12 +35,43 @@ module OOffice
 			result
 		end
 
+		def parse_and_generate_marked_tables
+			tables = Tables.new
+			@xml.search('.//draw:frame').each do |el|
+				name_attr = el.attributes['name']
+				if name_attr and name_attr.value.include?('table::')
+					name = name_attr.value.split('::').last
+
+					tables[name] = DataTable.new el.search('.//table:table').first
+				end
+			end
+			tables
+		end
+
 		def assign_setter_merthods
 			@markers.each do | name, markers |
 				self.define_singleton_method "#{name}=" do | new_text |
 					markers.each do | marker |
 						marker.replace new_text
 					end
+				end
+			end
+		end
+
+		class Tables# < BasicObject
+			def initialize
+				@tables = {}
+			end
+
+			def []=(table_name, table)
+				@tables[table_name.to_s] = table
+			end
+
+			def method_missing(meth, *args, &block)
+				if table = @tables[meth.to_s]
+					table.replace *args
+				else
+					raise ArgumentError.new "There is now table with #{meth}. Available table names: #{@tables.keys}"
 				end
 			end
 		end

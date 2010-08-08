@@ -6,6 +6,7 @@ require 'active_support/core_ext/string'
 
 require 'ooffice/base'
 require 'ooffice/marker'
+require 'ooffice/data_table'
 require 'ooffice/presentation'
 
 module OOffice

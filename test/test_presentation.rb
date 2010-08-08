@@ -21,6 +21,15 @@ class TestPresentation < Test::Unit::TestCase
 			assert_equal methods_before + UNIQ_MARKERS_NUMBER, @presentation.methods.size
 		end
 
+		should "find table" do
+			tables = @presentation.tables.instance_variable_get :@tables
+			assert_equal 1, tables.size
+			sex_and_age_table = tables['sex_and_age']
+			assert_not_nil sex_and_age_table
+			assert_equal 4, sex_and_age_table.rows.size
+			assert_equal 2, sex_and_age_table.rows.first.cells.size
+		end
+
 		should "replace text with setter methods" do
 			@presentation.assign_setter_merthods
 
@@ -30,6 +39,8 @@ class TestPresentation < Test::Unit::TestCase
 			@presentation.second_page = 'SECOND PAGE'
 
 			result = @presentation.xml.to_s
+
+			@presentation.tables.sex_and_age [ [9, 10], [8, 9], [7, 8], [6, 7] ]
 
 			assert_no_match /__module__/,      result
 			assert_no_match /__parent__/,      result
