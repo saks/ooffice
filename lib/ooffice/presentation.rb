@@ -64,7 +64,7 @@ module OOffice
 			end
 		end
 
-		class Tables < BasicObject
+		class Tables < ActiveSupport::BasicObject
 			attr_reader :tables
 
 			def initialize
