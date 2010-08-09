@@ -27,8 +27,7 @@ module OOffice
 
 		module ClassMethods
 			@@out_dir = '/tmp/result'
-
-			FileUtils.rm_r    @@out_dir
+			FileUtils.rm_rf   @@out_dir
 			FileUtils.mkdir_p @@out_dir
 
 			def out_dir=(new_out_dir) @@out_dir = new_out_dir end
