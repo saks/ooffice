@@ -59,7 +59,7 @@ module OOffice
 				self.class_eval do
 					self.send :define_method, accessor_name do | new_text |
 						markers.each do | marker |
-							marker.replace new_text
+							marker.replace new_text.to_s
 						end
 					end
 				end
