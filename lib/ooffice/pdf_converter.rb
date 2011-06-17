@@ -14,7 +14,7 @@ module OOffice
 			output_file_name = calculate_out_file_name output_file_name
 
 			# system("xvfb-run -a unoconv -f pdf #{input_file.path}")
-			system("xvfb-run -a unoconv -f pdf --stdout #{input_file.path} > #{output_file_name}")
+			system("unoconv -v -d presentation -f pdf --stdout #{input_file.path} > #{output_file_name}")
 
 			input_file.close
 			input_file.unlink
